@@ -4,6 +4,7 @@
  */
 package com.mycompany.flightbookingsystem;
 import javax.swing.JOptionPane;
+import java.sql.*;
 /**
  *
  * @author PMYLS
@@ -28,8 +29,9 @@ public class AirlineAdmin extends Person {
             System.out.println("wrong username or password! ");
         }
     }catch(Exception e){
-        e.printStackTrace();
-        //JOptionPane.showMessageDialog(this, e);
+        //e.printStackTrace();
+        JOptionPane.showMessageDialog(null, e, "Validation Error", JOptionPane.ERROR_MESSAGE);
+
     }
         
     }
