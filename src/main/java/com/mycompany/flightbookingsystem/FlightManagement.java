@@ -14,42 +14,21 @@ import java.text.SimpleDateFormat;
  */
 public class FlightManagement extends javax.swing.JFrame {
 
-    private int fNo;
-    private Object dep;
-    private Object arr;
-    private Time depTime;
-    private Time arrTime;
+    private String fNo;
+    private String dep;
+    private String arr;
+    private String depTime;
+    private String arrTime;
     private int totSeats;
     private int availSeats;
+    private String date;
 
     /**
      * Creates new form FlightManagement
      */
     public FlightManagement() {
         initComponents();
-        try {
-            fNo = Integer.parseInt( flightIdTF.getText());
-            dep = originComboBox.getSelectedItem();
-            arr = destinationComboBox.getSelectedItem();
-
-            // Parsing the time strings to Time objects
-            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm"); // Assuming time is in HH:mm format
-            depTime = new Time(timeFormat.parse(departureTimeTF.getText()).getTime());
-            arrTime = new Time(timeFormat.parse(arrivalTimeTF.getText()).getTime());
-
-            // Parsing totalSeats from String to int
-            totSeats = Integer.parseInt(seatsTF.getText());
-
-            // Initialize availableSeats with totalSeats initially
-            availSeats = totSeats;
-
-        } catch (ParseException e) {
-            System.out.println("Error parsing time: " + e.getMessage());
-            e.printStackTrace();
-        } catch (NumberFormatException e) {
-            System.out.println("Error parsing total seats: " + e.getMessage());
-            e.printStackTrace();
-        }
+        
 
     }
 
@@ -70,15 +49,15 @@ public class FlightManagement extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         originTF = new javax.swing.JLabel();
         destinationTF = new javax.swing.JLabel();
-        departureTimeTF = new javax.swing.JLabel();
-        arrivalTimeTF = new javax.swing.JLabel();
+        departureTimelabel = new javax.swing.JLabel();
+        arrivalTimelabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        flightIdTF = new javax.swing.JTextField();
+        flightNo = new javax.swing.JTextField();
         originComboBox = new javax.swing.JComboBox<>();
         destinationComboBox = new javax.swing.JComboBox<>();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        departureTimeTF = new javax.swing.JTextField();
+        arrivalTimeTF = new javax.swing.JTextField();
         dateTF = new javax.swing.JTextField();
         seatsTF = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -141,13 +120,13 @@ public class FlightManagement extends javax.swing.JFrame {
         destinationTF.setForeground(new java.awt.Color(255, 255, 255));
         destinationTF.setText("Destination");
 
-        departureTimeTF.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        departureTimeTF.setForeground(new java.awt.Color(255, 255, 255));
-        departureTimeTF.setText("DepartureTime");
+        departureTimelabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        departureTimelabel.setForeground(new java.awt.Color(255, 255, 255));
+        departureTimelabel.setText("DepartureTime");
 
-        arrivalTimeTF.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        arrivalTimeTF.setForeground(new java.awt.Color(255, 255, 255));
-        arrivalTimeTF.setText("Arrival Time");
+        arrivalTimelabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        arrivalTimelabel.setForeground(new java.awt.Color(255, 255, 255));
+        arrivalTimelabel.setText("Arrival Time");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -160,6 +139,18 @@ public class FlightManagement extends javax.swing.JFrame {
         originComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         destinationComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        dateTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dateTFActionPerformed(evt);
+            }
+        });
+
+        seatsTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seatsTFActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(255, 215, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -244,7 +235,7 @@ public class FlightManagement extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(87, 87, 87)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(flightIdTF, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(flightNo, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel11))
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -259,25 +250,25 @@ public class FlightManagement extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                        .addGap(31, 31, 31)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGap(57, 57, 57)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addGap(67, 67, 67)
-                                                .addComponent(destinationComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(destinationComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(27, 27, 27))
                                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addGap(13, 13, 13)
-                                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(27, 27, 27))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(destinationTF)
-                                        .addGap(10, 10, 10)))
+                                                .addComponent(destinationTF)
+                                                .addGap(10, 10, 10)))))
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(58, 58, 58)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(departureTimeTF)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(departureTimelabel)
+                                            .addComponent(departureTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(66, 66, 66)
                                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -289,11 +280,11 @@ public class FlightManagement extends javax.swing.JFrame {
                                 .addGap(65, 65, 65)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(arrivalTimeTF)
+                                        .addComponent(arrivalTimelabel)
                                         .addGap(117, 117, 117)
                                         .addComponent(jLabel5))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(arrivalTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(92, 92, 92)
                                         .addComponent(dateTF, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(72, 72, 72)
@@ -320,8 +311,8 @@ public class FlightManagement extends javax.swing.JFrame {
                                     .addComponent(jLabel11)
                                     .addComponent(originTF)
                                     .addComponent(destinationTF)
-                                    .addComponent(departureTimeTF)
-                                    .addComponent(arrivalTimeTF)
+                                    .addComponent(departureTimelabel)
+                                    .addComponent(arrivalTimelabel)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel6)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -330,11 +321,11 @@ public class FlightManagement extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(seatsTF, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(dateTF, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(arrivalTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(departureTimeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(destinationComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(originComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(flightIdTF, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(flightNo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(329, 329, 329)
@@ -345,9 +336,9 @@ public class FlightManagement extends javax.swing.JFrame {
                             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(215, 215, 215))
+                .addGap(203, 203, 203))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -368,19 +359,38 @@ public class FlightManagement extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Flight flight = new Flight(fNo,dep,arr,depTime,arrTime,totSeats);
+        
+        
+        try {
+            fNo = flightNo.getText();
+            dep = originComboBox.getSelectedItem().toString();
+            arr = destinationComboBox.getSelectedItem().toString();
+
+            depTime = departureTimeTF.getText();
+            arrTime = arrivalTimeTF.getText();
+
+            totSeats =Integer.parseInt(seatsTF.getText().trim());
+
+            availSeats = totSeats;
+            date=dateTF.getText();
+
+        }catch (NumberFormatException e) {
+            System.out.println("Error parsing total seats: " + e.getMessage());
+            e.printStackTrace();
+        }
+        Flight flight = new Flight(fNo,dep,arr,depTime,arrTime,totSeats,date);
         flight.addFlight();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Flight flight = new Flight(fNo,dep,arr,depTime,arrTime,totSeats);
+        Flight flight = new Flight(fNo,dep,arr,depTime,arrTime,totSeats,date);
         flight.updateFlight();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        Flight flight = new Flight(fNo,dep,arr,depTime,arrTime,totSeats);
+        Flight flight = new Flight(fNo,dep,arr,depTime,arrTime,totSeats,date);
         flight.deleteFlight();
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -389,6 +399,14 @@ public class FlightManagement extends javax.swing.JFrame {
         new AdminDashboard().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void dateTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dateTFActionPerformed
+
+    private void seatsTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seatsTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_seatsTFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -426,12 +444,14 @@ public class FlightManagement extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel arrivalTimeTF;
+    private javax.swing.JTextField arrivalTimeTF;
+    private javax.swing.JLabel arrivalTimelabel;
     private javax.swing.JTextField dateTF;
-    private javax.swing.JLabel departureTimeTF;
+    private javax.swing.JTextField departureTimeTF;
+    private javax.swing.JLabel departureTimelabel;
     private javax.swing.JComboBox<String> destinationComboBox;
     private javax.swing.JLabel destinationTF;
-    private javax.swing.JTextField flightIdTF;
+    private javax.swing.JTextField flightNo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -447,8 +467,6 @@ public class FlightManagement extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JComboBox<String> originComboBox;
     private javax.swing.JLabel originTF;
     private javax.swing.JTextField seatsTF;

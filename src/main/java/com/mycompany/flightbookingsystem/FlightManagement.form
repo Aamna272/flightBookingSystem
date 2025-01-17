@@ -77,7 +77,7 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="flightIdTF" min="-2" pref="124" max="-2" attributes="0"/>
+                                      <Component id="flightNo" min="-2" pref="124" max="-2" attributes="0"/>
                                       <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -99,31 +99,31 @@
                           </Group>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                          <Component id="jButton2" min="-2" pref="105" max="-2" attributes="0"/>
+                                      </Group>
                                       <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
                                               <Group type="102" attributes="0">
-                                                  <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                                                   <Component id="destinationComboBox" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                                                  <Component id="jButton2" min="-2" pref="105" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="destinationTF" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="destinationTF" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="departureTimeTF" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jTextField2" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
+                                              <Component id="departureTimelabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="departureTimeTF" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -142,12 +142,12 @@
                                   <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="arrivalTimeTF" min="-2" max="-2" attributes="0"/>
+                                          <Component id="arrivalTimelabel" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
                                           <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jTextField3" min="-2" pref="105" max="-2" attributes="0"/>
+                                          <Component id="arrivalTimeTF" min="-2" pref="105" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
                                           <Component id="dateTF" min="-2" pref="105" max="-2" attributes="0"/>
                                       </Group>
@@ -185,8 +185,8 @@
                                       <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="originTF" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="destinationTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="departureTimeTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="arrivalTimeTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="departureTimelabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="arrivalTimelabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -197,11 +197,11 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="seatsTF" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                                       <Component id="dateTF" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                                      <Component id="jTextField3" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                                      <Component id="jTextField2" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                                      <Component id="arrivalTimeTF" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                                      <Component id="departureTimeTF" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                                       <Component id="destinationComboBox" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                                       <Component id="originComboBox" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                                      <Component id="flightIdTF" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                                      <Component id="flightNo" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -219,9 +219,9 @@
                   </Group>
                   <EmptySpace pref="53" max="32767" attributes="0"/>
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" pref="396" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="203" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -299,7 +299,7 @@
             <Property name="text" type="java.lang.String" value="Destination"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="departureTimeTF">
+        <Component class="javax.swing.JLabel" name="departureTimelabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
@@ -310,7 +310,7 @@
             <Property name="text" type="java.lang.String" value="DepartureTime"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="arrivalTimeTF">
+        <Component class="javax.swing.JLabel" name="arrivalTimelabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
@@ -343,7 +343,7 @@
             <Property name="text" type="java.lang.String" value="No. of seats"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="flightIdTF">
+        <Component class="javax.swing.JTextField" name="flightNo">
         </Component>
         <Component class="javax.swing.JComboBox" name="originComboBox">
           <Properties>
@@ -375,13 +375,19 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="departureTimeTF">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField3">
+        <Component class="javax.swing.JTextField" name="arrivalTimeTF">
         </Component>
         <Component class="javax.swing.JTextField" name="dateTF">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dateTFActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="seatsTF">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="seatsTFActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
